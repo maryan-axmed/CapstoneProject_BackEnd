@@ -33,7 +33,7 @@ public class Booking {
     @Column
     private LocalDateTime dateAndTime;
 
-//    CONSTRUCTOR
+//    CONSTRUCTOR- for the booking model
 
     public Booking(Customer customer, Restaurant restaurant, LocalDateTime dateAndTime){
         this.customer = customer;
