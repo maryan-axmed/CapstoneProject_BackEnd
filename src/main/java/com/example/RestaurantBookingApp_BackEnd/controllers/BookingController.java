@@ -26,24 +26,24 @@ public class BookingController {
 
     // GetMapping for getBookingById
     @GetMapping(value= "/{id}")
-    public ResponseEntity<Booking> getBookingById(@PathVariable Long id) {
-        Booking booking = bookingService.getBookingById(id);
-        if (booking.isPresent()) {
+    public ResponseEntity<Booking> getBookingById(@PathVariable Long bookingId) {
+        Booking booking = bookingService.getBookingById(bookingId);
+//        if (booking.isPresent()) {
             return new ResponseEntity<>(booking, HttpStatus.OK);
         }
-        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
-    }
+//        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+//    }
 
     // GetMapping for getAllBookingsByCustomerId
     @GetMapping(value= "/customer/{id}")
-    public ResponseEntity<Booking> getAllBookingsByCustomerId(@PathVariable Long id) {
+    public ResponseEntity<List<Booking>> getAllBookingsByCustomerId(@PathVariable Long id) {
         return new ResponseEntity<>(bookingService.getAllBookingsByCustomerId(id), HttpStatus.OK);
     }
 
     // PostMapping for makeNewBookings
 
     @PostMapping
-    public ResponseEntity<Booking> makeNewBooking(@RequestBody Booking booking){
+    public ResponseEntity<List<Booking>> makeNewBooking(@RequestBody Booking booking){
         bookingService.makeNewBooking(booking);
         return new ResponseEntity<>(bookingService.getAllBookings(), HttpStatus.CREATED);
     }
@@ -54,10 +54,10 @@ public class BookingController {
     public ResponseEntity<Long> deleteBooking(@PathVariable Long id) {
         Booking booking = bookingService.getBookingById(id); // optional ?
         bookingService.deleteBooking(id);
-        if (!booking.isPresent()) {
+//        if (!booking.isPresent()) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(id, HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
 

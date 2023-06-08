@@ -106,4 +106,7 @@ public class Booking {
     public void setMessage(String message) {
         this.message = message;
     }
+
+//    public boolean isPresent() {
+//    }
 }
