@@ -27,13 +27,13 @@ public class TableController {
 
     @GetMapping(value = "/{tableId}")
     public ResponseEntity<Table> getTableById(@PathVariable Long tableId){
-        Table table = tableService.getTableById();
+        Table table = tableService.getTableById(tableId);
         return new ResponseEntity<>(table, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{restaurantId}")
     public ResponseEntity<List<Table>> getAllTablesByRestaurantId(@PathVariable Long restaurantId){
-        List<Table> tables = tableService.getAllTablesByRestaurantId();
+        List<Table> tables = tableService.getAllTablesByRestaurantId(restaurantId);
         return new ResponseEntity<>(tables, HttpStatus.OK);
     }
 
