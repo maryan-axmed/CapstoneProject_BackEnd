@@ -43,6 +43,11 @@ public class Restaurant {
         this.tables = new ArrayList<>();
     }
 
+//   DEFAULT CONSTRUCTOR
+    public Restaurant(){
+
+    }
+
 //  GETTERS AND SETTERS
     public Long getId() {
         return id;

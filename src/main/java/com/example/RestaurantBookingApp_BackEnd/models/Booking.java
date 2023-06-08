@@ -39,6 +39,8 @@ public class Booking {
     @Column
     private LocalDateTime dateAndTime;
 
+    private String message;
+
 //    CONSTRUCTOR- for the booking model
 
     public Booking(Customer customer, Restaurant restaurant, LocalDateTime dateAndTime){
@@ -46,6 +48,7 @@ public class Booking {
         this.restaurant = restaurant;
         this.listOfTables = new ArrayList<>();
         this.dateAndTime = dateAndTime;
+        this.message = "";
     }
 
 //    DEFAULT CONSTRUCTOR
@@ -94,5 +97,13 @@ public class Booking {
 
     public void setDateAndTime(LocalDateTime dateAndTime) {
         this.dateAndTime = dateAndTime;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
