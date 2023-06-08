@@ -3,8 +3,9 @@ package com.example.RestaurantBookingApp_BackEnd.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-@Entity
-@jakarta.persistence.Table(name = "tables")
+import java.util.List;
+
+@Entity(name = "tables")
 public class Table {
 
 //    PROPERTIES
@@ -16,10 +17,15 @@ public class Table {
     @Column
     private Integer numberOfSeats;
 
-    @JsonIgnoreProperties({"tables"})
     @ManyToOne
+    @JsonIgnoreProperties({"tables"})
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
+
+
+    @ManyToMany(mappedBy ="listOfTables")
+    @JsonIgnoreProperties({"listOfTables"})
+    private List<Booking> listOfBookings;
 
 
 //    CONSTRUCTOR

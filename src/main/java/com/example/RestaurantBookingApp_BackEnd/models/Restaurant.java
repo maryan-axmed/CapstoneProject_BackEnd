@@ -7,8 +7,7 @@ import javax.naming.Name;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@jakarta.persistence.Table(name = "restaurants")
+@Entity(name = "restaurants")
 public class Restaurant {
 //  PROPERTIES
     @Id
@@ -19,14 +18,17 @@ public class Restaurant {
     @Column
     private String name;
 
+    @OneToMany(mappedBy = "restaurant")
+    @JsonIgnoreProperties({"restaurant"})
+//    @JoinColumn(name = "table_id")
     private List<Table> tables;
 
     @Column
     private String location;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "restaurant")
     @JsonIgnoreProperties({"restaurant"})
-    @JoinColumn( name ="booking_id")
+//    @JoinColumn( name ="booking_id")
     private List<Booking> bookings;
 
 //    EXT:

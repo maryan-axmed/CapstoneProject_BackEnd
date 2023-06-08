@@ -6,9 +6,7 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-
-@jakarta.persistence.Table(name = "customers")
+@Entity(name = "customers")
 public class Customer {
     // Customers have an ID, name, email address and a list of bookings
     @Id
@@ -20,14 +18,9 @@ public class Customer {
     @Column
     private String email;
 
-    @JsonIgnoreProperties({"customers"})
-    @ManyToMany
-    @JoinTable(
-            name = "customers_bookings",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "booking_id")
-    )
 
+    @OneToMany(mappedBy = "customer")
+    @JsonIgnoreProperties({"customer"})
     private List<Booking> bookings;
 
     public Customer(String name, String email ){

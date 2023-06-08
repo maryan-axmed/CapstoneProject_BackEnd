@@ -7,8 +7,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@jakarta.persistence.Table(name = "bookings")
+@Entity(name = "bookings")
 public class Booking {
 
     @Id
@@ -22,12 +21,19 @@ public class Booking {
     private Customer customer;
 
 //    one to many => restaurant
-    @OneToMany
+    @ManyToOne
     @JsonIgnoreProperties({"tables", "bookings"})
     @JoinColumn(name="restaurant_id")
     private Restaurant restaurant;
 
-    @Column
+//    owner over table in the many-to-many rel
+    @ManyToMany
+    @JsonIgnoreProperties({"bookings"})
+    @JoinTable(
+            name="bookings_tables",
+            joinColumns = {@JoinColumn(name="booking_id")},
+            inverseJoinColumns = {@JoinColumn(name = "table_id")}
+    )
     private List<Table> listOfTables;
 
     @Column
