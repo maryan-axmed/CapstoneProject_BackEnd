@@ -52,6 +52,15 @@ public class DataLoader implements ApplicationRunner {
         Restaurant restaurant7 = new Restaurant("Watan", "London");
         Restaurant restaurant8 = new Restaurant("Chaiwala", "Edinburgh");
 
+        restaurantRepository.save(restaurant1);
+        restaurantRepository.save(restaurant2);
+        restaurantRepository.save(restaurant3);
+        restaurantRepository.save(restaurant4);
+        restaurantRepository.save(restaurant5);
+        restaurantRepository.save(restaurant6);
+        restaurantRepository.save(restaurant7);
+        restaurantRepository.save(restaurant8);
+
 
 
 //        make 1 customer
@@ -60,7 +69,9 @@ public class DataLoader implements ApplicationRunner {
         Customer customer2 = new Customer("Sarah", "sarah@hotmail.com");
         Customer customer3 = new Customer("Taliane", "taliane@hotmail.com");
 
-
+        customerRepository.save(customer1);
+        customerRepository.save(customer2);
+        customerRepository.save(customer3);
 
 
 //        create tables
@@ -77,6 +88,17 @@ public class DataLoader implements ApplicationRunner {
         Table table9 = new Table(12 ,restaurant1);
         Table table10 = new Table(2 ,restaurant1);
 
+        tableRepository.save(table1);
+        tableRepository.save(table2);
+        tableRepository.save(table3);
+        tableRepository.save(table4);
+        tableRepository.save(table5);
+        tableRepository.save(table6);
+        tableRepository.save(table7);
+        tableRepository.save(table8);
+        tableRepository.save(table9);
+        tableRepository.save(table10);
+
 
 //        create bookings
 
@@ -84,7 +106,9 @@ public class DataLoader implements ApplicationRunner {
         Booking booking2 = new Booking(customer2, restaurant1, LocalDateTime.of(2023,12,03 ,16, 00));
         Booking booking3 = new Booking(customer3, restaurant2, LocalDateTime.of(2023,12,03 ,18, 00));
 
-
+        bookingRepository.save(booking1);
+        bookingRepository.save(booking2);
+        bookingRepository.save(booking3);
     }
 
 
