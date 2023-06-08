@@ -1,15 +1,14 @@
 package com.example.RestaurantBookingApp_BackEnd.controllers;
 
 
+import com.example.RestaurantBookingApp_BackEnd.models.Booking;
 import com.example.RestaurantBookingApp_BackEnd.models.Customer;
 import com.example.RestaurantBookingApp_BackEnd.models.Restaurant;
 import com.example.RestaurantBookingApp_BackEnd.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,19 +20,27 @@ public class CustomerController {
     CustomerService customerService;
 
     @GetMapping(value = "/{customerId}")
-    public ResponseEntity<Customer> getCustomerById(){
-        List<Customer> customers = customerService.getAllCustomers();
-        return new ResponseEntity<>(customers, HttpStatus.OK);
+    public ResponseEntity<Customer> getCustomerById(@PathVariable Long customerId){
+        Customer customer = customerService.getCustomerById();
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
+
+//    post/customers/id/bookings
+//    this is the post mapping to view one customers' booking ( basically the wallet)
+
+//    @PatchMapping(value="/{customerId}/bookings")
+//    public ResponseEntity<List<Booking>> getAllBookingsFromCustomer(@RequestBody BookingDTO bookingDTO @PathVariable Long customerId){
+//        List<Booking> customersBookings =
+//    }
 
 
 //    EXTENSTION : IF CONSIDERING MULTIPLE CUSTOMERS
-
-    @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomers(){
-        List<Customer> customers = customerService.getAllCustomers();
-        return new ResponseEntity<>(customers, HttpStatus.OK);
-    }
+//
+//    @GetMapping
+//    public ResponseEntity<List<Customer>> getAllCustomers(){
+//        List<Customer> customers = customerService.getAllCustomers();
+//        return new ResponseEntity<>(customers, HttpStatus.OK);
+//    }
 
 
 
