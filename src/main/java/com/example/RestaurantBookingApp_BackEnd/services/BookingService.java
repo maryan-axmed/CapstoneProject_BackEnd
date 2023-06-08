@@ -37,15 +37,10 @@ public class BookingService {
         return bookingRepository.findById(bookingId).get();
     }
 
-
-    public void makeNewBooking(Booking booking){
-
-
-    }
-
+//incomplete??
+//
     public void makeNewBooking(Long customerId, Long bookingId){
         Optional<Booking> booking =  bookingRepository.findById(bookingId);
-
         Optional<Customer> customer = customerRepository.findById(customerId);
     }
 
