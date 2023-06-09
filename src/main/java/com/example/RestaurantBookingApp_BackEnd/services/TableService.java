@@ -46,18 +46,15 @@ public class TableService {
     }
 
     public List<TableDTO> getAllTablesByRestaurantId(Long restaurantId) {
-//        METHOD ONE:
-//        get a restaurant given an id
         Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
-        return restaurant.getTables();
 
-        //        METHOD TWO:
-//        create new tablelist
-//        List<Table>
+        List<Table> tableList = restaurant.getTables();
+        List<TableDTO> tableDTOs = new ArrayList<>();
 
-//        get all tables given restaurant
-//        for loop - loop through the list and convert to DTO
-//        for loop - add it to the new list if the id=restaurantId
-
+        for (Table table: tableList){
+            TableDTO tableDTO= getTableDTO(table);
+            tableDTOs.add(tableDTO);
+        }
+        return tableDTOs;
     }
 }
