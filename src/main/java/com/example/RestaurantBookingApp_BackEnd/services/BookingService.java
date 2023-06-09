@@ -1,9 +1,6 @@
 package com.example.RestaurantBookingApp_BackEnd.services;
 
-import com.example.RestaurantBookingApp_BackEnd.models.Booking;
-import com.example.RestaurantBookingApp_BackEnd.models.BookingDTO;
-import com.example.RestaurantBookingApp_BackEnd.models.Customer;
-import com.example.RestaurantBookingApp_BackEnd.models.Restaurant;
+import com.example.RestaurantBookingApp_BackEnd.models.*;
 import com.example.RestaurantBookingApp_BackEnd.repositories.BookingRepository;
 import com.example.RestaurantBookingApp_BackEnd.repositories.CustomerRepository;
 import com.example.RestaurantBookingApp_BackEnd.repositories.RestaurantRepository;
@@ -16,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,8 +62,15 @@ public class BookingService {
         LocalTime time = bookingDTO.getTime();
         LocalDate date = bookingDTO.getDate();
 
-        Booking booking = new Booking(customer, restaurant, date, time);
+        List<Table> listTable = new ArrayList<>();
+
+        Table table1 = new Table();
+        listTable.add(table1);
+
+        Booking booking = new Booking(customer, restaurant, listTable, date, time);
+        booking.setListOfTables(listTable);
         bookingRepository.save(booking);
+
     }
 
     public void deleteBooking(Long bookingId){

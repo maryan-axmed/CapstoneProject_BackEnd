@@ -31,7 +31,7 @@ public class TableController {
         return new ResponseEntity<>(table, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{restaurantId}")
+    @GetMapping(value = "/restaurant/{restaurantId}")
     public ResponseEntity<List<Table>> getAllTablesByRestaurantId(@PathVariable Long restaurantId){
         List<Table> tables = tableService.getAllTablesByRestaurantId(restaurantId);
         return new ResponseEntity<>(tables, HttpStatus.OK);

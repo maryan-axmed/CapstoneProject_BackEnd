@@ -48,7 +48,7 @@ public class Booking {
 
 //    CONSTRUCTOR- for the booking model
 
-    public Booking(Customer customer, Restaurant restaurant, LocalDate date, LocalTime time){
+    public Booking(Customer customer, Restaurant restaurant, List listOfTables, LocalDate date, LocalTime time){
         this.customer = customer;
         this.restaurant = restaurant;
         this.listOfTables = new ArrayList<>();

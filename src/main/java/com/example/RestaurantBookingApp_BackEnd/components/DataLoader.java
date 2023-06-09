@@ -17,6 +17,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -101,12 +103,24 @@ public class DataLoader implements ApplicationRunner {
         tableRepository.save(table9);
         tableRepository.save(table10);
 
+//      create list of tables
+
+        List<Table> tableList = new ArrayList<>();
+
+//        add tables to list
+
+        tableList.add(table1);
+        tableList.add(table2);
+        tableList.add(table3);
 
 //        create bookings
 
-        Booking booking1 = new Booking(customer1, restaurant2, LocalDate.of(2023, 12, 03), LocalTime.of(14,00));
-        Booking booking2 = new Booking(customer2, restaurant1, LocalDate.of(2023, 9, 02), LocalTime.of(12,00));
-        Booking booking3 = new Booking(customer3, restaurant2, LocalDate.of(2023, 11, 12), LocalTime.of(17,00));
+        Booking booking1 = new Booking(customer1, restaurant2, tableList, LocalDate.of(2023, 12, 03), LocalTime.of(14,00));
+        booking1.setListOfTables(tableList);
+        Booking booking2 = new Booking(customer2, restaurant1, tableList,  LocalDate.of(2023, 9, 02), LocalTime.of(12,00));
+        booking2.setListOfTables(tableList);
+        Booking booking3 = new Booking(customer3, restaurant2, tableList,LocalDate.of(2023, 11, 12), LocalTime.of(17,00));
+        booking3.setListOfTables(tableList);
 
         bookingRepository.save(booking1);
         bookingRepository.save(booking2);
