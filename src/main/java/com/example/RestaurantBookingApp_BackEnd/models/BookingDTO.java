@@ -9,6 +9,7 @@ import java.util.List;
 
 public class BookingDTO {
 
+    private Long id;
     private Long customerId;
     private String customerName;
     private List<Long> tableIds;
@@ -21,10 +22,11 @@ public class BookingDTO {
 //    CONSTRUCTOR
 //    CONSTRUCTOR should not have id??
 
-    public BookingDTO(Long customerId, String customerName, Long restaurantId, String date, String time){
+    public BookingDTO(Long id,Long customerId, String customerName, Long restaurantId, List tableIds, String date, String time){
+        this.id = id;
         this.customerId = customerId;
         this.customerName = customerName;
-        this.tableIds = new ArrayList<>();
+        this.tableIds = tableIds;
         this.restaurantId = restaurantId;
         this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy/mm/dd"));;
         this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("hh:mm"));;
@@ -38,14 +40,14 @@ public class BookingDTO {
 
 //    GETTERS AND SETTERS:
 
-//
-//    public Long getId() {
-//        return id;
-//    }
 
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getCustomerId() {
         return customerId;
@@ -63,11 +65,11 @@ public class BookingDTO {
         this.customerName = customerName;
     }
 
-    public List<Long> getTableId() {
+    public List<Long> getTableIds() {
         return tableIds;
     }
 
-    public void setTableId(List<Long> tableId) {
+    public void setTableIds(List<Long> tableId) {
         this.tableIds = tableId;
     }
 

@@ -1,5 +1,6 @@
 package com.example.RestaurantBookingApp_BackEnd.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -18,7 +19,7 @@ public class Booking {
 
 //    many to one => customer
     @ManyToOne
-    @JsonIgnoreProperties({"listOfBookings"})
+    @JsonIgnoreProperties({"bookings"})
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -51,7 +52,7 @@ public class Booking {
     public Booking(Customer customer, Restaurant restaurant, List listOfTables, LocalDate date, LocalTime time){
         this.customer = customer;
         this.restaurant = restaurant;
-        this.listOfTables = new ArrayList<>();
+        this.listOfTables = listOfTables;
         this.date = date;
         this.time = time;
         this.message = "";
@@ -60,6 +61,12 @@ public class Booking {
 //    DEFAULT CONSTRUCTOR
     public Booking(){
 
+    }
+
+
+
+    public void addTable(Table table){
+        this.listOfTables.add(table);
     }
 
 //    GETTERS AND SETTERS:

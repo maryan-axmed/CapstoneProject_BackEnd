@@ -36,6 +36,7 @@ public class BookingService {
 
 
     public List<Booking> getAllBookings(){
+//        create method that takes in booking object but return bookingDTO
         return  bookingRepository.findAll();
     }
 
@@ -64,11 +65,14 @@ public class BookingService {
 
         List<Table> listTable = new ArrayList<>();
 
-        Table table1 = new Table();
-        listTable.add(table1);
+//        Table table1 = new Table();
+        for (Long tableId : bookingDTO.getTableIds()){
+            Table table = tableRepository.findById(tableId).get();
+            listTable.add(table);
+        }
+
 
         Booking booking = new Booking(customer, restaurant, listTable, date, time);
-        booking.setListOfTables(listTable);
         bookingRepository.save(booking);
 
     }

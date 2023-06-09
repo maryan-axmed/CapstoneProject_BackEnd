@@ -20,8 +20,8 @@ public class BookingController {
     // GetMapping for getAllBookings
 
     @GetMapping
-    public ResponseEntity<List<Booking>> getAllBookings(){
-        List<Booking> bookings = bookingService.getAllBookings();
+    public ResponseEntity<List<BookingDTO>> getAllBookings(){
+        List<BookingDTO> bookings = bookingService.getAllBookings();
         return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
 

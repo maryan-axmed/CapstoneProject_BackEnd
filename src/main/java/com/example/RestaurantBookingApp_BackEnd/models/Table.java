@@ -3,6 +3,7 @@ package com.example.RestaurantBookingApp_BackEnd.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "tables")
@@ -23,7 +24,7 @@ public class Table {
     private Restaurant restaurant;
 
 
-    @ManyToMany(mappedBy ="listOfTables")
+    @ManyToMany(mappedBy ="listOfTables", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JsonIgnoreProperties({"listOfTables"})
     private List<Booking> listOfBookings;
 
@@ -33,6 +34,7 @@ public class Table {
     public Table(Integer numberOfSeats, Restaurant restaurant){
         this.numberOfSeats = numberOfSeats;
         this.restaurant = restaurant;
+        this.listOfBookings = new ArrayList<>();
     }
 
 //    DEFAULT CONSTRUCTOR
@@ -44,6 +46,14 @@ public class Table {
 
 //    GETTERS & SETTERS
 
+
+    public List<Booking> getListOfBookings() {
+        return listOfBookings;
+    }
+
+    public void setListOfBookings(List<Booking> listOfBookings) {
+        this.listOfBookings = listOfBookings;
+    }
 
     public Long getId() {
         return id;
