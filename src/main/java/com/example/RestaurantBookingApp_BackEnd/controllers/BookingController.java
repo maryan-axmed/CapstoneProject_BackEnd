@@ -27,10 +27,10 @@ public class BookingController {
 
     // GetMapping for getBookingById
     @GetMapping(value= "/{id}")
-    public ResponseEntity<Booking> getBookingById(@PathVariable Long id) {
-        Booking booking = bookingService.getBookingById(id);
+    public ResponseEntity<BookingDTO> getBookingById(@PathVariable Long id) {
+        BookingDTO bookingDTO = bookingService.getBookingById(id);
 //        if (booking.isPresent()) {
-            return new ResponseEntity<>(booking, HttpStatus.OK);
+            return new ResponseEntity<>(bookingDTO, HttpStatus.OK);
         }
 //        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
 //    }
@@ -53,7 +53,7 @@ public class BookingController {
     // DeleteMapping for DeleteBooking
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> deleteBooking(@PathVariable Long id) {
-        Booking booking = bookingService.getBookingById(id); // optional ?
+        BookingDTO bookingDTO = bookingService.getBookingById(id); // optional ?
         bookingService.deleteBooking(id);
 //        if (!booking.isPresent()) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

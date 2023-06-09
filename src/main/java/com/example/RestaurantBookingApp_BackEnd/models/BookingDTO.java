@@ -22,14 +22,15 @@ public class BookingDTO {
 //    CONSTRUCTOR
 //    CONSTRUCTOR should not have id??
 
+
     public BookingDTO(Long id,Long customerId, String customerName, Long restaurantId, List tableIds, String date, String time){
         this.id = id;
         this.customerId = customerId;
         this.customerName = customerName;
         this.tableIds = tableIds;
         this.restaurantId = restaurantId;
-        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy/mm/dd"));;
-        this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("hh:mm"));;
+        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));;
+        this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"));;
         this.message = "";
     }
 

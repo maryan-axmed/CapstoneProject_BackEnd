@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -34,15 +35,44 @@ public class BookingService {
 
     //Default constructor ???
 
+    public BookingDTO getBookingDTO(Booking booking) {
+        List<Long> tableIds = new ArrayList<>();
+        for (Table table : booking.getListOfTables()) {
+            Long id = table.getId();
+            tableIds.add(id);
+        }
+        BookingDTO bookingDTO = new BookingDTO(booking.getId(), booking.getCustomer().getId(), booking.getCustomer().getName(), booking.getRestaurant().getId(), tableIds, booking.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), booking.getTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        return bookingDTO;
+    }
 
-    public List<Booking> getAllBookings(){
+        public List<BookingDTO> getAllBookings(){
 //        create method that takes in booking object but return bookingDTO
-        return  bookingRepository.findAll();
+            List<BookingDTO> allBookingDTOs = new ArrayList<>();
+            List<Booking> allBookings = bookingRepository.findAll();
+        for(Booking booking : allBookings){
+             BookingDTO bookingDTO = getBookingDTO(booking);
+             allBookingDTOs.add(bookingDTO);
+        }
+        return allBookingDTOs;
     }
 
 
-    public Booking getBookingById (Long bookingId){
-        return bookingRepository.findById(bookingId).get();
+
+
+
+
+    public BookingDTO getBookingById (Long bookingId){
+          Booking booking = bookingRepository.findById(bookingId).get();
+          BookingDTO bookingDTO = getBookingDTO(booking);
+          return bookingDTO;
+//        BookingDTO bookingDTO = new ArrayList<>();
+//        List<Booking> allBookings = bookingRepository.findById(bookingId).get();
+//        for(Booking booking : allBookings){
+//            BookingDTO bookingDTO = getBookingDTO(booking);
+//            allBookingDTOs.add(bookingDTO);
+//        }
+//        return allBookingDTOs;
+////        return bookingRepository.findById(bookingId).get();
     }
 
 //    public void makeNewBooking(Long customerId, Long bookingId){
