@@ -29,7 +29,8 @@ public class RestaurantService {
             Long id = table.getId();
             tableIds.add(id);
         }
-        RestaurantDTO restaurantDTO = new RestaurantDTO(restaurant.getId(), restaurant.getName(), tableIds, restaurant.getLocation(), bookingIds)
+        RestaurantDTO restaurantDTO = new RestaurantDTO(restaurant.getId(), restaurant.getName(), tableIds, restaurant.getLocation(), bookingIds);
+        return restaurantDTO;
     }
     public List<RestaurantDTO> getAllRestaurants() {
         List<RestaurantDTO> restaurantDTOs = new ArrayList<>();

@@ -37,7 +37,7 @@ public class BookingController {
 
     // GetMapping for getAllBookingsByCustomerId
     @GetMapping(value= "/customer/{id}")
-    public ResponseEntity<List<Booking>> getAllBookingsByCustomerId(@PathVariable Long id) {
+    public ResponseEntity<List<BookingDTO>> getAllBookingsByCustomerId(@PathVariable Long id) {
         return new ResponseEntity<>(bookingService.getAllBookingsByCustomerId(id), HttpStatus.OK);
     }
 

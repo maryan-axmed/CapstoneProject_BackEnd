@@ -113,8 +113,16 @@ public class BookingService {
     }
 
 
-    public List<Booking> getAllBookingsByCustomerId(Long customerId) {
+    public List<BookingDTO> getAllBookingsByCustomerId(Long customerId) {
         Customer customer = customerRepository.findById(customerId).get();
-        return  customer.getBookings();
+        List<Booking> bookings = customer.getBookings();
+        List<BookingDTO> bookingDTOS = new ArrayList<>();
+
+        for(Booking booking: bookings){
+            BookingDTO bookingDTO = getBookingDTO(booking);
+            bookingDTOS.add(bookingDTO);
+        }
+
+        return bookingDTOS;
     }
 }
