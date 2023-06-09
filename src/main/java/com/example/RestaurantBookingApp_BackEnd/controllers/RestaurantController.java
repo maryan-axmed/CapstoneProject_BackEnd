@@ -2,6 +2,7 @@ package com.example.RestaurantBookingApp_BackEnd.controllers;
 
 
 import com.example.RestaurantBookingApp_BackEnd.models.Restaurant;
+import com.example.RestaurantBookingApp_BackEnd.models.RestaurantDTO;
 import com.example.RestaurantBookingApp_BackEnd.models.Table;
 import com.example.RestaurantBookingApp_BackEnd.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +23,15 @@ public class RestaurantController {
     RestaurantService restaurantService;
 
     @GetMapping
-    public ResponseEntity<List<Restaurant>> getAllRestaurants(){
-        List<Restaurant> restaurants = restaurantService.getAllRestaurants();
+    public ResponseEntity<List<RestaurantDTO>> getAllRestaurants(){
+        List<RestaurantDTO> restaurants = restaurantService.getAllRestaurants();
         return new ResponseEntity<>(restaurants, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{restaurantId}")
-    public ResponseEntity<Restaurant>  getRestaurantById(@PathVariable Long restaurantId){
-        Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
-        return new ResponseEntity<>(restaurant, HttpStatus.OK);
+    public ResponseEntity<RestaurantDTO>  getRestaurantById(@PathVariable Long restaurantId){
+        RestaurantDTO restaurantDTO = restaurantService.getRestaurantById(restaurantId);
+        return new ResponseEntity<>(restaurantDTO, HttpStatus.OK);
     }
 
 
