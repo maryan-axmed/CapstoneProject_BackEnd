@@ -14,7 +14,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -102,9 +104,9 @@ public class DataLoader implements ApplicationRunner {
 
 //        create bookings
 
-        Booking booking1 = new Booking(customer1, restaurant2, LocalDateTime.of(2023,12,03 ,14, 00));
-        Booking booking2 = new Booking(customer2, restaurant1, LocalDateTime.of(2023,12,03 ,16, 00));
-        Booking booking3 = new Booking(customer3, restaurant2, LocalDateTime.of(2023,12,03 ,18, 00));
+        Booking booking1 = new Booking(customer1, restaurant2, LocalDate.of(2023, 12, 03), LocalTime.of(14,00));
+        Booking booking2 = new Booking(customer2, restaurant1, LocalDate.of(2023, 9, 02), LocalTime.of(12,00));
+        Booking booking3 = new Booking(customer3, restaurant2, LocalDate.of(2023, 11, 12), LocalTime.of(17,00));
 
         bookingRepository.save(booking1);
         bookingRepository.save(booking2);

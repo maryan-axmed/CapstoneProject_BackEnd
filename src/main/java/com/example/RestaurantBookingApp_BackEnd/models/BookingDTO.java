@@ -1,42 +1,51 @@
 package com.example.RestaurantBookingApp_BackEnd.models;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
-public class bookingDTO {
+public class BookingDTO {
 
-    private Long id;
     private Long customerId;
     private String customerName;
-    private List<Long> tableId;
+    private List<Long> tableIds;
     private Long restaurantId;
     private LocalDateTime dateAndTime;
+    private LocalDate date;
+    private LocalTime time;
     private String message;
 
 //    CONSTRUCTOR
-    public bookingDTO(Long customerId, String customerName, Long restaurantId, LocalDateTime dateAndTime){
+//    CONSTRUCTOR should not have id??
+
+    public BookingDTO(Long customerId, String customerName, Long restaurantId, String date, String time){
         this.customerId = customerId;
         this.customerName = customerName;
+        this.tableIds = new ArrayList<>();
         this.restaurantId = restaurantId;
-        this.dateAndTime = dateAndTime;
+        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy/mm/dd"));;
+        this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("hh:mm"));;
         this.message = "";
     }
 
 //    DEFAULT CONSTRUCTOR
-    public bookingDTO(){
+    public BookingDTO(){
 
     }
 
 //    GETTERS AND SETTERS:
 
+//
+//    public Long getId() {
+//        return id;
+//    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public Long getCustomerId() {
         return customerId;
@@ -55,11 +64,11 @@ public class bookingDTO {
     }
 
     public List<Long> getTableId() {
-        return tableId;
+        return tableIds;
     }
 
     public void setTableId(List<Long> tableId) {
-        this.tableId = tableId;
+        this.tableIds = tableId;
     }
 
     public Long getRestaurantId() {
@@ -70,12 +79,20 @@ public class bookingDTO {
         this.restaurantId = restaurantId;
     }
 
-    public LocalDateTime getDateAndTime() {
-        return dateAndTime;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setDateAndTime(LocalDateTime dateAndTime) {
-        this.dateAndTime = dateAndTime;
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     public String getMessage() {

@@ -1,15 +1,21 @@
 package com.example.RestaurantBookingApp_BackEnd.services;
 
 import com.example.RestaurantBookingApp_BackEnd.models.Booking;
+import com.example.RestaurantBookingApp_BackEnd.models.BookingDTO;
 import com.example.RestaurantBookingApp_BackEnd.models.Customer;
+import com.example.RestaurantBookingApp_BackEnd.models.Restaurant;
 import com.example.RestaurantBookingApp_BackEnd.repositories.BookingRepository;
 import com.example.RestaurantBookingApp_BackEnd.repositories.CustomerRepository;
+import com.example.RestaurantBookingApp_BackEnd.repositories.RestaurantRepository;
 import com.example.RestaurantBookingApp_BackEnd.repositories.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +27,9 @@ public class BookingService {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    RestaurantRepository restaurantRepository;
 
     @Autowired
     TableRepository tableRepository;
@@ -37,11 +46,26 @@ public class BookingService {
         return bookingRepository.findById(bookingId).get();
     }
 
-//incomplete??
-//
-    public void makeNewBooking(Long customerId, Long bookingId){
-        Optional<Booking> booking =  bookingRepository.findById(bookingId);
-        Optional<Customer> customer = customerRepository.findById(customerId);
+//    public void makeNewBooking(Long customerId, Long bookingId){
+//        Optional<Booking> booking =  bookingRepository.findById(bookingId);
+//        Optional<Customer> customer = customerRepository.findById(customerId);
+//    }
+
+    public void makeNewBooking(BookingDTO bookingDTO){
+        // make new booking object and get the customer name and the dateAndTime
+
+        //add customer object to the new booking object:
+        Customer customer = customerRepository.findById(bookingDTO.getCustomerId()).get();
+
+        //add restaurant object to the new booking object:
+        Restaurant restaurant = restaurantRepository.findById(bookingDTO.getRestaurantId()).get();
+
+        //add time and date??- need to add a 2-hour slot
+        LocalTime time = bookingDTO.getTime();
+        LocalDate date = bookingDTO.getDate();
+
+        Booking booking = new Booking(customer, restaurant, date, time);
+        bookingRepository.save(booking);
     }
 
     public void deleteBooking(Long bookingId){

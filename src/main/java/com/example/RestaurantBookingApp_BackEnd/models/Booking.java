@@ -3,7 +3,9 @@ package com.example.RestaurantBookingApp_BackEnd.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,17 +39,21 @@ public class Booking {
     private List<Table> listOfTables;
 
     @Column
-    private LocalDateTime dateAndTime;
+    private LocalDate date;
+
+    @Column
+    private LocalTime time;
 
     private String message;
 
 //    CONSTRUCTOR- for the booking model
 
-    public Booking(Customer customer, Restaurant restaurant, LocalDateTime dateAndTime){
+    public Booking(Customer customer, Restaurant restaurant, LocalDate date, LocalTime time){
         this.customer = customer;
         this.restaurant = restaurant;
         this.listOfTables = new ArrayList<>();
-        this.dateAndTime = dateAndTime;
+        this.date = date;
+        this.time = time;
         this.message = "";
     }
 
@@ -91,12 +97,20 @@ public class Booking {
         this.listOfTables = listOfTables;
     }
 
-    public LocalDateTime getDateAndTime() {
-        return dateAndTime;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setDateAndTime(LocalDateTime dateAndTime) {
-        this.dateAndTime = dateAndTime;
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     public String getMessage() {

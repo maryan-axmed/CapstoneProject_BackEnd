@@ -1,6 +1,7 @@
 package com.example.RestaurantBookingApp_BackEnd.controllers;
 
 import com.example.RestaurantBookingApp_BackEnd.models.Booking;
+import com.example.RestaurantBookingApp_BackEnd.models.BookingDTO;
 import com.example.RestaurantBookingApp_BackEnd.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,8 +27,8 @@ public class BookingController {
 
     // GetMapping for getBookingById
     @GetMapping(value= "/{id}")
-    public ResponseEntity<Booking> getBookingById(@PathVariable Long bookingId) {
-        Booking booking = bookingService.getBookingById(bookingId);
+    public ResponseEntity<Booking> getBookingById(@PathVariable Long id) {
+        Booking booking = bookingService.getBookingById(id);
 //        if (booking.isPresent()) {
             return new ResponseEntity<>(booking, HttpStatus.OK);
         }
@@ -43,9 +44,9 @@ public class BookingController {
     // PostMapping for makeNewBookings
 
     @PostMapping
-    public ResponseEntity<List<Booking>> makeNewBooking(@RequestBody Booking booking){
-        bookingService.makeNewBooking(booking);
-        return new ResponseEntity<>(bookingService.getAllBookings(), HttpStatus.CREATED);
+    public ResponseEntity<BookingDTO> makeNewBooking(@RequestBody BookingDTO bookingDTO){
+        bookingService.makeNewBooking(bookingDTO);
+        return new ResponseEntity<>(bookingDTO, HttpStatus.CREATED);
     }
 
 
