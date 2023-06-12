@@ -36,8 +36,8 @@ public class CustomerController {
         return new ResponseEntity<>(location, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{id}/location/edit")
-    public ResponseEntity<CustomerDTO> editCustomerLocation(@PathVariable Long id, @RequestBody Long customerId, @RequestBody String newLocation){
+    @PatchMapping(value = "/{customerId}/location/edit")
+    public ResponseEntity<CustomerDTO> editCustomerLocation(@PathVariable Long customerId, @RequestBody String newLocation){
         CustomerDTO customerDTO = customerService.editCustomerLocation(customerId, newLocation);
         return new ResponseEntity<>(customerDTO, HttpStatus.OK);
     }
