@@ -69,9 +69,9 @@ public class DataLoader implements ApplicationRunner {
 
 //        make 1 customer
 
-        Customer customer1 = new Customer("Yasmin", "yasmin@hotmail.com");
-        Customer customer2 = new Customer("Sarah", "sarah@hotmail.com");
-        Customer customer3 = new Customer("Taliane", "taliane@hotmail.com");
+        Customer customer1 = new Customer("Yasmin", "yasmin@hotmail.com", "Leicester");
+        Customer customer2 = new Customer("Sarah", "sarah@hotmail.com", "London");
+        Customer customer3 = new Customer("Taliane", "taliane@hotmail.com", "Milton Keynes");
 
         customerRepository.save(customer1);
         customerRepository.save(customer2);

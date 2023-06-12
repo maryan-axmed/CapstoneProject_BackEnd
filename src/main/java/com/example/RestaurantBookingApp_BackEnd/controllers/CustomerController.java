@@ -36,6 +36,11 @@ public class CustomerController {
         return new ResponseEntity<>(location, HttpStatus.OK);
     }
 
+    @PutMapping(value = "/{id}/location/edit")
+    public ResponseEntity<CustomerDTO> editCustomerLocation(@PathVariable Long id, @RequestBody Long customerId, @RequestBody String newLocation){
+        CustomerDTO customerDTO = customerService.editCustomerLocation(customerId, newLocation);
+        return new ResponseEntity<>(customerDTO, HttpStatus.OK);
+    }
 //    post/customers/id/bookings
 //    this is the post mapping to view one customers' booking ( basically the wallet)
 

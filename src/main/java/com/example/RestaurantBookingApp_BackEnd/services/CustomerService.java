@@ -38,7 +38,7 @@ public class CustomerService {
             Long id = booking.getId();
             bookingIds.add(id);
         }
-        CustomerDTO customerDTO = new CustomerDTO(customer.getId(),customer.getName(), customer.getEmail(), bookingIds);
+        CustomerDTO customerDTO = new CustomerDTO(customer.getId(),customer.getName(), customer.getEmail(), bookingIds, customer.getLocation());
         return customerDTO;
     }
 
@@ -50,5 +50,16 @@ public class CustomerService {
             customerDTOs.add(customerDTO);
         }
         return customerDTOs;
+    }
+
+    public CustomerDTO editCustomerLocation(Long customerId, String newLocation) {
+        Customer customer = customerRepository.findById(customerId).get();
+        customer.setLocation(newLocation);
+        customerRepository.save(customer);
+
+        CustomerDTO customerDTO = getCustomerDTO(customer);
+        customerDTO.setLocation(newLocation);
+        return customerDTO;
+
     }
 }
