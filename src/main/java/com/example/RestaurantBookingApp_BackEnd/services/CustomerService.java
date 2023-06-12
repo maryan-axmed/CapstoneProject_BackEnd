@@ -21,6 +21,17 @@ public class CustomerService {
         return customerDTO;
     }
 
+    public String getCustomerLocationById(Long customerId){
+        Customer customer = customerRepository.findById(customerId).get();
+        CustomerDTO customerDTO = getCustomerDTO(customer);;
+        String location = customerDTO.getLocation();
+        return location;
+    }
+
+//    public String setCustomerLocation(String newLocation){
+//
+//    }
+
     public CustomerDTO getCustomerDTO(Customer customer) {
         List<Long> bookingIds = new ArrayList<>();
         for (Booking booking: customer.getBookings()) {

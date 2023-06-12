@@ -30,7 +30,11 @@ public class CustomerController {
         List<CustomerDTO> customer = customerService.getAllCustomers();
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
-
+    @GetMapping(value = "/{customerId}/location")
+    public ResponseEntity<String> getCustomerLocationById(@PathVariable Long customerId){
+        String location = customerService.getCustomerLocationById(customerId);
+        return new ResponseEntity<>(location, HttpStatus.OK);
+    }
 
 //    post/customers/id/bookings
 //    this is the post mapping to view one customers' booking ( basically the wallet)
