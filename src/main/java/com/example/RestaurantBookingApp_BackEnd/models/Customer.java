@@ -18,18 +18,29 @@ public class Customer {
     @Column
     private String email;
 
+    @Column
+    private String location;
 
     @OneToMany(mappedBy = "customer")
     @JsonIgnoreProperties({"customer"})
     private List<Booking> bookings;
 
-    public Customer(String name, String email ){
+    public Customer(String name, String email, String location){
+        this.location = location;
         this.name =name;
         this.email = email;
         this.bookings = new ArrayList<>();
     }
     public Customer(){
 
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Long getId() {

@@ -8,7 +8,7 @@ public class CustomerDTO {
     private String name;
     private String email;
     private List<Long> bookingIds;
-
+    private String location;
 //    CONSTRUCTOR
     public CustomerDTO(Long id, String name,String email, List bookingsIds){
         this.id = id;
