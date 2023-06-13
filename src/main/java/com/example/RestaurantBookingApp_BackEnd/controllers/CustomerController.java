@@ -1,10 +1,7 @@
 package com.example.RestaurantBookingApp_BackEnd.controllers;
 
 
-import com.example.RestaurantBookingApp_BackEnd.models.Booking;
-import com.example.RestaurantBookingApp_BackEnd.models.Customer;
-import com.example.RestaurantBookingApp_BackEnd.models.CustomerDTO;
-import com.example.RestaurantBookingApp_BackEnd.models.Restaurant;
+import com.example.RestaurantBookingApp_BackEnd.models.*;
 import com.example.RestaurantBookingApp_BackEnd.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,13 +38,22 @@ public class CustomerController {
         CustomerDTO customerDTO = customerService.editCustomerLocation(customerId, newLocation);
         return new ResponseEntity<>(customerDTO, HttpStatus.OK);
     }
+
+
+
 //    post/customers/id/bookings
 //    this is the post mapping to view one customers' booking ( basically the wallet)
 
-//    @PatchMapping(value="/{customerId}/bookings")
-//    public ResponseEntity<List<Booking>> getAllBookingsFromCustomer(@RequestBody BookingDTO bookingDTO @PathVariable Long customerId){
-//        List<Booking> customersBookings =
-//    }
+    @GetMapping(value="/{customerId}/bookings")
+    public ResponseEntity<List<BookingDTO>> getAllBookingsByCustomerId(@PathVariable Long customerId) {
+        List<BookingDTO> customersBookings = customerService.getAllBookingsByCustomerId(customerId);
+        return new ResponseEntity<>(customersBookings, HttpStatus.OK);
+    }
+    @GetMapping(value="/{customerId}/bookings/{bookingId}")
+    public ResponseEntity<BookingDTO> getBookingByCustomerId(@PathVariable Long customerId, @PathVariable Long bookingId) {
+        BookingDTO customerBooking = customerService.getBookingByCustomerId(customerId, bookingId);
+        return new ResponseEntity<>(customerBooking, HttpStatus.OK);
+    }
 
 
 //    EXTENSTION : IF CONSIDERING MULTIPLE CUSTOMERS

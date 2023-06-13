@@ -1,6 +1,7 @@
 package com.example.RestaurantBookingApp_BackEnd.services;
 
 import com.example.RestaurantBookingApp_BackEnd.models.*;
+import com.example.RestaurantBookingApp_BackEnd.repositories.BookingRepository;
 import com.example.RestaurantBookingApp_BackEnd.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class CustomerService {
     BookingService bookingService;
     @Autowired
     CustomerRepository customerRepository;
+    @Autowired
+    BookingRepository bookingRepository;
     public CustomerDTO getCustomerById(Long customerId) {
         Customer customer = customerRepository.findById(customerId).get();
         CustomerDTO customerDTO = getCustomerDTO(customer);
@@ -61,5 +64,29 @@ public class CustomerService {
         customerDTO.setLocation(newLocation);
         return customerDTO;
 
+    }
+
+    public List<BookingDTO> getAllBookingsByCustomerId(Long customerId) {
+        List<BookingDTO> allBookings  = new ArrayList<>();
+
+        List<BookingDTO> bookings = bookingService.getAllBookings();
+        for(BookingDTO booking: bookings) {
+            Long customersId = booking.getCustomerId();
+            if (customersId == customerId) {
+                allBookings.add(booking);
+            }
+        }
+        return allBookings;
+    }
+
+    public BookingDTO getBookingByCustomerId(Long customerId, Long bookingId) {
+        List<BookingDTO> bookingDTOS = bookingService.getAllBookings();
+        BookingDTO customerBooking = new BookingDTO();
+        for(BookingDTO booking: bookingDTOS) {
+            if (booking.getCustomerId()== customerId && booking.getId() == bookingId) {
+                customerBooking = bookingService.getBookingById(bookingId);
+            }
+        }
+        return customerBooking;
     }
 }
