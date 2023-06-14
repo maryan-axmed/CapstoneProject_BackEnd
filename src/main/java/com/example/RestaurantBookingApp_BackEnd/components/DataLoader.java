@@ -112,6 +112,8 @@ public class DataLoader implements ApplicationRunner {
         tableList.add(table1);
         tableList.add(table2);
         tableList.add(table3);
+        tableList.add(table7);
+        tableList.add(table8);
 
 //        create bookings
 
@@ -122,9 +124,18 @@ public class DataLoader implements ApplicationRunner {
         Booking booking3 = new Booking(customer3, restaurant2, tableList,LocalDate.of(2023, 11, 12), LocalTime.of(17,00));
         booking3.setListOfTables(tableList);
 
+        Booking booking4= new Booking(customer3, restaurant1, tableList,LocalDate.of(2023, 11, 12), LocalTime.of(17,00));
+        booking4.setListOfTables(tableList);
+
+        Booking booking5 = new Booking(customer3, restaurant1, tableList,LocalDate.of(2023, 10, 11), LocalTime.of(17,00));
+        booking5.setListOfTables(tableList);
+
+
         bookingRepository.save(booking1);
         bookingRepository.save(booking2);
         bookingRepository.save(booking3);
+        bookingRepository.save(booking4);
+        bookingRepository.save(booking5);
     }
 
 
