@@ -47,14 +47,14 @@ public class DataLoader implements ApplicationRunner {
 
 //        make 6 restaurants
 
-        Restaurant restaurant1 = new Restaurant("Nandos", "London");
-        Restaurant restaurant2 = new Restaurant("Wagamama", "London");
-        Restaurant restaurant3 = new Restaurant("An-Najeeb", "Leicester");
-        Restaurant restaurant4 = new Restaurant("Konak", "Leicester");
-        Restaurant restaurant5 = new Restaurant("PizzaExpress", "Edinburgh");
-        Restaurant restaurant6 = new Restaurant("Herron", "Edinburgh");
-        Restaurant restaurant7 = new Restaurant("Watan", "London");
-        Restaurant restaurant8 = new Restaurant("Chaiwala", "Edinburgh");
+        Restaurant restaurant1 = new Restaurant("Nandos", "London", "'I highly recommend their peri chicken'");
+        Restaurant restaurant2 = new Restaurant("Wagamama", "London", "Mo 'My go-to! Always tastes brilliant.'");
+        Restaurant restaurant3 = new Restaurant("An-Najeeb", "Leicester", "'The service here is impeccable'");
+        Restaurant restaurant4 = new Restaurant("Konak", "Leicester", "'This Turkish fusion wows me!'");
+        Restaurant restaurant5 = new Restaurant("Pizza Posto", "Edinburgh",  "'The best pizza spot in Edinburgh!'");
+        Restaurant restaurant6 = new Restaurant("Scott's Kitchen", "Edinburgh", "'The best breakfast spot in Edinburgh!'");
+        Restaurant restaurant7 = new Restaurant("Watan", "London", "Sarah 'One of the best dishes I've ever tried. Wow'");
+        Restaurant restaurant8 = new Restaurant("Chaiiwala", "Edinburgh", "Malika 'I dream about their Karak Chai'");
 
         restaurantRepository.save(restaurant1);
         restaurantRepository.save(restaurant2);
