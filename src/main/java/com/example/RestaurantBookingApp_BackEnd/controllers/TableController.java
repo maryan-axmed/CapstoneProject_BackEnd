@@ -21,8 +21,8 @@ public class TableController {
     TableService tableService;
 
     @GetMapping
-    public ResponseEntity<List<TableDTO>> getAllTables(){
-        List<TableDTO> tables = tableService.getAllTables();
+    public ResponseEntity<List<Table>> getAllTables(){
+        List<Table> tables = tableService.getAllTables();
         return new ResponseEntity<>(tables, HttpStatus.OK);
     }
 
@@ -33,8 +33,8 @@ public class TableController {
     }
 
     @GetMapping(value = "/restaurant/{restaurantId}")
-    public ResponseEntity<List<TableDTO>> getAllTablesByRestaurantId(@PathVariable Long restaurantId){
-        List<TableDTO> tables = tableService.getAllTablesByRestaurantId(restaurantId);
+    public ResponseEntity<List<Table>> getAllTablesByRestaurantId(@PathVariable Long restaurantId){
+        List<Table> tables = tableService.getAllTablesByRestaurantId(restaurantId);
         return new ResponseEntity<>(tables, HttpStatus.OK);
     }
 

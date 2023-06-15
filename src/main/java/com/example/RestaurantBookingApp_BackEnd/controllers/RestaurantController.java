@@ -23,14 +23,14 @@ public class RestaurantController {
     RestaurantService restaurantService;
 
     @GetMapping
-    public ResponseEntity<List<RestaurantDTO>> getAllRestaurants(){
-        List<RestaurantDTO> restaurants = restaurantService.getAllRestaurants();
+    public ResponseEntity<List<Restaurant>> getAllRestaurants(){
+        List<Restaurant> restaurants = restaurantService.getAllRestaurants();
         return new ResponseEntity<>(restaurants, HttpStatus.OK);
     }
 
     @GetMapping(value = "/{restaurantId}")
-    public ResponseEntity<RestaurantDTO>  getRestaurantById(@PathVariable Long restaurantId){
-        RestaurantDTO restaurantDTO = restaurantService.getRestaurantById(restaurantId);
+    public ResponseEntity<Restaurant>  getRestaurantById(@PathVariable Long restaurantId){
+        Restaurant restaurantDTO = restaurantService.getRestaurantById(restaurantId);
         return new ResponseEntity<>(restaurantDTO, HttpStatus.OK);
     }
 

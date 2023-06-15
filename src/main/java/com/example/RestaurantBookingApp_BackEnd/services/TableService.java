@@ -29,14 +29,10 @@ public class TableService {
         return tableDTO;
     }
 
-    public List<TableDTO> getAllTables() {
+    public List<Table> getAllTables() {
         List<TableDTO> tableDTOs = new ArrayList<>();
         List<Table> allTables = tableRepository.findAll();
-        for (Table table: allTables){
-            TableDTO tableDTO = getTableDTO(table);
-            tableDTOs.add(tableDTO);
-        }
-        return tableDTOs;
+        return allTables;
     }
 
     public TableDTO getTableById(Long tableId) {
@@ -45,16 +41,9 @@ public class TableService {
         return tableDTO;
     }
 
-    public List<TableDTO> getAllTablesByRestaurantId(Long restaurantId) {
+    public List<Table> getAllTablesByRestaurantId(Long restaurantId) {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
-
         List<Table> tableList = restaurant.getTables();
-        List<TableDTO> tableDTOs = new ArrayList<>();
-
-        for (Table table: tableList){
-            TableDTO tableDTO= getTableDTO(table);
-            tableDTOs.add(tableDTO);
-        }
-        return tableDTOs;
+        return tableList;
     }
 }

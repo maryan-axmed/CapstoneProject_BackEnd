@@ -26,8 +26,7 @@ public class CustomerService {
 
     public String getCustomerLocationById(Long customerId){
         Customer customer = customerRepository.findById(customerId).get();
-        CustomerDTO customerDTO = getCustomerDTO(customer);;
-        String location = customerDTO.getLocation();
+        String location = customer.getLocation();
         return location;
     }
 
@@ -45,33 +44,24 @@ public class CustomerService {
         return customerDTO;
     }
 
-    public List<CustomerDTO> getAllCustomers() {
-        List<CustomerDTO> customerDTOs = new ArrayList<>();
+    public List<Customer> getAllCustomers() {
         List<Customer> allCustomers = customerRepository.findAll();
-        for(Customer customer: allCustomers) {
-            CustomerDTO customerDTO = getCustomerDTO(customer);
-            customerDTOs.add(customerDTO);
-        }
-        return customerDTOs;
+        return allCustomers;
     }
 
-    public CustomerDTO editCustomerLocation(Long customerId, String newLocation) {
+    public Customer editCustomerLocation(Long customerId, String newLocation) {
         Customer customer = customerRepository.findById(customerId).get();
         customer.setLocation(newLocation);
         customerRepository.save(customer);
-
-        CustomerDTO customerDTO = getCustomerDTO(customer);
-        customerDTO.setLocation(newLocation);
-        return customerDTO;
+        return customer;
 
     }
 
-    public List<BookingDTO> getAllBookingsByCustomerId(Long customerId) {
-        List<BookingDTO> allBookings  = new ArrayList<>();
-
-        List<BookingDTO> bookings = bookingService.getAllBookings();
-        for(BookingDTO booking: bookings) {
-            Long customersId = booking.getCustomerId();
+    public List<Booking> getAllBookingsByCustomerId(Long customerId) {
+        List<Booking> allBookings = new ArrayList<>();
+        List<Booking> bookings = bookingService.getAllBookings();
+        for(Booking booking: bookings) {
+            Long customersId = booking.getCustomer().getId();
             if (customersId == customerId) {
                 allBookings.add(booking);
             }

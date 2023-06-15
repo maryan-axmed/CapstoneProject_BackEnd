@@ -45,15 +45,9 @@ public class BookingService {
         return bookingDTO;
     }
 
-        public List<BookingDTO> getAllBookings(){
-//        create method that takes in booking object but return bookingDTO
-            List<BookingDTO> allBookingDTOs = new ArrayList<>();
+        public List<Booking> getAllBookings(){
             List<Booking> allBookings = bookingRepository.findAll();
-        for(Booking booking : allBookings){
-             BookingDTO bookingDTO = getBookingDTO(booking);
-             allBookingDTOs.add(bookingDTO);
-        }
-        return allBookingDTOs;
+            return allBookings;
 
     }
 
@@ -83,7 +77,7 @@ public class BookingService {
 //        Optional<Customer> customer = customerRepository.findById(customerId);
 //    }
 
-    public void makeNewBooking(BookingDTO bookingDTO){
+    public Booking makeNewBooking(BookingDTO bookingDTO){
         // make new booking object and get the customer name and the dateAndTime
 
         //add customer object to the new booking object:
@@ -108,6 +102,8 @@ public class BookingService {
         Booking booking = new Booking(customer, restaurant, listTable, date, time);
         bookingRepository.save(booking);
 
+        return booking;
+
     }
 
     public void deleteBooking(Long bookingId){
@@ -116,16 +112,9 @@ public class BookingService {
     }
 
 
-    public List<BookingDTO> getAllBookingsByCustomerId(Long customerId) {
+    public List<Booking> getAllBookingsByCustomerId(Long customerId) {
         Customer customer = customerRepository.findById(customerId).get();
         List<Booking> bookings = customer.getBookings();
-        List<BookingDTO> bookingDTOS = new ArrayList<>();
-
-        for(Booking booking: bookings){
-            BookingDTO bookingDTO = getBookingDTO(booking);
-            bookingDTOS.add(bookingDTO);
-        }
-
-        return bookingDTOS;
+        return bookings;
     }
 }

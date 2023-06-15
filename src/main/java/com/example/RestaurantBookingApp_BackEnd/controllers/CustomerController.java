@@ -23,8 +23,8 @@ public class CustomerController {
         return new ResponseEntity<>(customerDTO, HttpStatus.OK);
     }
     @GetMapping
-    public ResponseEntity<List<CustomerDTO>> getAllCustomers(){
-        List<CustomerDTO> customer = customerService.getAllCustomers();
+    public ResponseEntity<List<Customer>> getAllCustomers(){
+        List<Customer> customer = customerService.getAllCustomers();
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
     @GetMapping(value = "/{customerId}/location")
@@ -34,9 +34,9 @@ public class CustomerController {
     }
 
     @PatchMapping(value = "/{customerId}/location/edit")
-    public ResponseEntity<CustomerDTO> editCustomerLocation(@PathVariable Long customerId, @RequestBody String newLocation){
-        CustomerDTO customerDTO = customerService.editCustomerLocation(customerId, newLocation);
-        return new ResponseEntity<>(customerDTO, HttpStatus.OK);
+    public ResponseEntity<Customer> editCustomerLocation(@PathVariable Long customerId, @RequestBody String newLocation){
+        Customer customer = customerService.editCustomerLocation(customerId, newLocation);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
 
@@ -45,15 +45,15 @@ public class CustomerController {
 //    this is the post mapping to view one customers' booking ( basically the wallet)
 
     @GetMapping(value="/{customerId}/bookings")
-    public ResponseEntity<List<BookingDTO>> getAllBookingsByCustomerId(@PathVariable Long customerId) {
-        List<BookingDTO> customersBookings = customerService.getAllBookingsByCustomerId(customerId);
+    public ResponseEntity<List<Booking>> getAllBookingsByCustomerId(@PathVariable Long customerId) {
+        List<Booking> customersBookings = customerService.getAllBookingsByCustomerId(customerId);
         return new ResponseEntity<>(customersBookings, HttpStatus.OK);
     }
-    @GetMapping(value="/{customerId}/bookings/{bookingId}")
-    public ResponseEntity<BookingDTO> getBookingByCustomerId(@PathVariable Long customerId, @PathVariable Long bookingId) {
-        BookingDTO customerBooking = customerService.getBookingByCustomerId(customerId, bookingId);
-        return new ResponseEntity<>(customerBooking, HttpStatus.OK);
-    }
+//    @GetMapping(value="/{customerId}/bookings/{bookingId}")
+//    public ResponseEntity<Booking> getBookingByCustomerId(@PathVariable Long customerId, @PathVariable Long bookingId) {
+//        BookingDTO customerBooking = customerService.getBookingByCustomerId(customerId, bookingId);
+//        return new ResponseEntity<>(customerBooking, HttpStatus.OK);
+//    }
 
 
 //    EXTENSTION : IF CONSIDERING MULTIPLE CUSTOMERS

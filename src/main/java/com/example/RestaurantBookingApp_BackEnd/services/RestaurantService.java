@@ -32,20 +32,14 @@ public class RestaurantService {
         RestaurantDTO restaurantDTO = new RestaurantDTO(restaurant.getId(), restaurant.getName(), tableIds, restaurant.getLocation(), bookingIds);
         return restaurantDTO;
     }
-    public List<RestaurantDTO> getAllRestaurants() {
-        List<RestaurantDTO> restaurantDTOs = new ArrayList<>();
+    public List<Restaurant> getAllRestaurants() {
         List<Restaurant> restaurants = restaurantRepository.findAll();
-        for (Restaurant restaurant: restaurants){
-            RestaurantDTO restaurantDTO = getRestaurantDTO(restaurant);
-            restaurantDTOs.add(restaurantDTO);
-        }
-        return restaurantDTOs;
+        return restaurants;
     }
 
-    public RestaurantDTO getRestaurantById(Long restaurantId) {
+    public Restaurant getRestaurantById(Long restaurantId) {
         Restaurant restaurant = restaurantRepository.findById(restaurantId).get();
-        RestaurantDTO restaurantDTO = getRestaurantDTO(restaurant);
-        return restaurantDTO;
+        return restaurant;
     }
 
 }
