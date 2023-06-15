@@ -88,6 +88,7 @@ public class BookingService {
 
         //add time and date??- need to add a 2-hour slot
         LocalTime time = bookingDTO.getTime();
+
         LocalDate date = bookingDTO.getDate();
 
         List<Table> listTable = new ArrayList<>();

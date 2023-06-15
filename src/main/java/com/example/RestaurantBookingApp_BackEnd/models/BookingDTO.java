@@ -1,5 +1,8 @@
 package com.example.RestaurantBookingApp_BackEnd.models;
 
+import org.springframework.cglib.core.Local;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -15,7 +18,11 @@ public class BookingDTO {
     private List<Long> tableIds;
     private Long restaurantId;
     private LocalDateTime dateAndTime;
+
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
+
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime time;
     private String message;
 
@@ -29,8 +36,10 @@ public class BookingDTO {
         this.customerName = customerName;
         this.tableIds = tableIds;
         this.restaurantId = restaurantId;
-        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));;
-        this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"));;
+//        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+//        this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"));;
+        this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm:ss"));;
         this.message = "";
     }
 
