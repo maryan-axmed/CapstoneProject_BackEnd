@@ -31,7 +31,7 @@ public class Booking {
 
 //    owner over table in the many-to-many rel
     @ManyToMany
-    @JsonIgnoreProperties({"bookings"})
+    @JsonIgnoreProperties({"listOfBookings", "restaurant"})
     @JoinTable(
             name="bookings_tables",
             joinColumns = {@JoinColumn(name="booking_id")},

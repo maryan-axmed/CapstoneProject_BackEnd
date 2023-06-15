@@ -19,7 +19,7 @@ public class Restaurant {
     private String name;
 
     @OneToMany(mappedBy = "restaurant")
-    @JsonIgnoreProperties({"restaurant"})
+    @JsonIgnoreProperties({"restaurant", "listOfBookings"})
 //    @JoinColumn(name = "table_id")
     private List<Table> tables;
 
@@ -27,7 +27,7 @@ public class Restaurant {
     private String location;
 
     @OneToMany(mappedBy = "restaurant")
-    @JsonIgnoreProperties({"restaurant"})
+    @JsonIgnoreProperties({"restaurant", "customer", "listOfTables"})
 //    @JoinColumn( name ="booking_id")
     private List<Booking> bookings;
 

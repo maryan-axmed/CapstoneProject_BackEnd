@@ -19,13 +19,13 @@ public class Table {
     private Integer numberOfSeats;
 
     @ManyToOne
-    @JsonIgnoreProperties({"tables"})
+    @JsonIgnoreProperties({"tables", "bookings"})
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
 
     @ManyToMany(mappedBy ="listOfTables", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JsonIgnoreProperties({"listOfTables"})
+    @JsonIgnoreProperties({"listOfTables", "customer", "restaurant"})
     private List<Booking> listOfBookings;
 
 
