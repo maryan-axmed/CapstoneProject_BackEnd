@@ -79,14 +79,17 @@ public class CustomerService {
         return allBookings;
     }
 
-    public BookingDTO getBookingByCustomerId(Long customerId, Long bookingId) {
-        List<BookingDTO> bookingDTOS = bookingService.getAllBookings();
-        BookingDTO customerBooking = new BookingDTO();
-        for(BookingDTO booking: bookingDTOS) {
-            if (booking.getCustomerId()== customerId && booking.getId() == bookingId) {
-                customerBooking = bookingService.getBookingById(bookingId);
-            }
-        }
-        return customerBooking;
-    }
+
+
+//    fix
+//    public BookingDTO getBookingByCustomerId(Long customerId, Long bookingId) {
+//        List<BookingDTO> bookingDTOS = bookingService.getAllBookings();
+//        BookingDTO customerBooking = new BookingDTO();
+//        for(BookingDTO booking: bookingDTOS) {
+//            if (booking.getCustomerId()== customerId && booking.getId() == bookingId) {
+//                customerBooking = bookingService.getBookingById(bookingId);
+//            }
+//        }
+//        return customerBooking;
+//    }
 }

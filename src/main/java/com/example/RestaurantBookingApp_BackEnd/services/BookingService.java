@@ -41,7 +41,7 @@ public class BookingService {
             Long id = table.getId();
             tableIds.add(id);
         }
-        BookingDTO bookingDTO = new BookingDTO(booking.getId(), booking.getCustomer().getId(), booking.getCustomer().getName(), booking.getRestaurant().getId(), tableIds, booking.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), booking.getTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        BookingDTO bookingDTO = new BookingDTO(booking.getCustomer().getId(), booking.getCustomer().getName(), booking.getRestaurant().getId(), tableIds, booking.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), booking.getTime().format(DateTimeFormatter.ofPattern("HH:mm")));
         return bookingDTO;
     }
 
@@ -54,7 +54,10 @@ public class BookingService {
              allBookingDTOs.add(bookingDTO);
         }
         return allBookingDTOs;
+
     }
+
+
 
 
 

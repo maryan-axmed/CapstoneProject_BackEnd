@@ -86,11 +86,15 @@ public class DataLoader implements ApplicationRunner {
         Table table4 = new Table(12 ,restaurant2);
         Table table5 = new Table(2 ,restaurant2);
 
-        Table table6 = new Table(4 ,restaurant1);
-        Table table7 = new Table(6 ,restaurant1);
-        Table table8 = new Table(8 ,restaurant1);
-        Table table9 = new Table(12 ,restaurant1);
-        Table table10 = new Table(2 ,restaurant1);
+        Table table6 = new Table(2 ,restaurant1);
+        Table table7 = new Table(4 ,restaurant1);
+        Table table8 = new Table(6 ,restaurant1);
+        Table table9 = new Table(8 ,restaurant1);
+        Table table10 = new Table(12 ,restaurant1);
+        Table table11 = new Table(2 ,restaurant1);
+        Table table12= new Table(2 ,restaurant1);
+        Table table13 = new Table(4 ,restaurant1);
+        Table table14 = new Table(6 ,restaurant1);
 
         tableRepository.save(table1);
         tableRepository.save(table2);
@@ -102,6 +106,10 @@ public class DataLoader implements ApplicationRunner {
         tableRepository.save(table8);
         tableRepository.save(table9);
         tableRepository.save(table10);
+        tableRepository.save(table11);
+        tableRepository.save(table12);
+        tableRepository.save(table13);
+        tableRepository.save(table14);
 
 //      create list of tables
 
@@ -113,7 +121,10 @@ public class DataLoader implements ApplicationRunner {
         tableList.add(table2);
         tableList.add(table3);
         tableList.add(table7);
-        tableList.add(table8);
+//        tableList.add(table11);
+//        tableList.add(table12);
+//        tableList.add(table13);
+//        tableList.add(table14);
 
 //        create bookings
 

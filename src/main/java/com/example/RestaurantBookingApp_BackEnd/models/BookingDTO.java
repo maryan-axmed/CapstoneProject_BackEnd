@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BookingDTO {
 
-    private Long id;
+//    private Long id;
     private Long customerId;
     private String customerName;
     private List<Long> tableIds;
@@ -23,8 +23,8 @@ public class BookingDTO {
 //    CONSTRUCTOR should not have id??
 
 
-    public BookingDTO(Long id,Long customerId, String customerName, Long restaurantId, List tableIds, String date, String time){
-        this.id = id;
+    public BookingDTO(Long customerId, String customerName, Long restaurantId, List tableIds, String date, String time){
+//        this.id = id;
         this.customerId = customerId;
         this.customerName = customerName;
         this.tableIds = tableIds;
@@ -41,14 +41,14 @@ public class BookingDTO {
 
 //    GETTERS AND SETTERS:
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public Long getCustomerId() {
         return customerId;
