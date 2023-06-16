@@ -2,6 +2,7 @@ package com.example.RestaurantBookingApp_BackEnd.controllers;
 
 
 import com.example.RestaurantBookingApp_BackEnd.models.Restaurant;
+import com.example.RestaurantBookingApp_BackEnd.models.RestaurantDTO;
 import com.example.RestaurantBookingApp_BackEnd.models.Table;
 import com.example.RestaurantBookingApp_BackEnd.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class RestaurantController {
 
     @GetMapping(value = "/{restaurantId}")
     public ResponseEntity<Restaurant>  getRestaurantById(@PathVariable Long restaurantId){
-        Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
-        return new ResponseEntity<>(restaurant, HttpStatus.OK);
+        Restaurant restaurantDTO = restaurantService.getRestaurantById(restaurantId);
+        return new ResponseEntity<>(restaurantDTO, HttpStatus.OK);
     }
 
 

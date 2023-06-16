@@ -1,5 +1,8 @@
 package com.example.RestaurantBookingApp_BackEnd.models;
 
+import org.springframework.cglib.core.Local;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -9,25 +12,34 @@ import java.util.List;
 
 public class BookingDTO {
 
+//    private Long id;
     private Long customerId;
     private String customerName;
     private List<Long> tableIds;
     private Long restaurantId;
     private LocalDateTime dateAndTime;
+
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
+
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime time;
     private String message;
 
 //    CONSTRUCTOR
 //    CONSTRUCTOR should not have id??
 
-    public BookingDTO(Long customerId, String customerName, Long restaurantId, String date, String time){
+
+    public BookingDTO(Long customerId, String customerName, Long restaurantId, List tableIds, String date, String time){
+//        this.id = id;
         this.customerId = customerId;
         this.customerName = customerName;
-        this.tableIds = new ArrayList<>();
+        this.tableIds = tableIds;
         this.restaurantId = restaurantId;
-        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy/mm/dd"));;
-        this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("hh:mm"));;
+//        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+//        this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm"));;
+        this.time = LocalTime.parse(time, DateTimeFormatter.ofPattern("HH:mm:ss"));;
         this.message = "";
     }
 
@@ -42,7 +54,7 @@ public class BookingDTO {
 //    public Long getId() {
 //        return id;
 //    }
-
+//
 //    public void setId(Long id) {
 //        this.id = id;
 //    }
@@ -63,11 +75,11 @@ public class BookingDTO {
         this.customerName = customerName;
     }
 
-    public List<Long> getTableId() {
+    public List<Long> getTableIds() {
         return tableIds;
     }
 
-    public void setTableId(List<Long> tableId) {
+    public void setTableIds(List<Long> tableId) {
         this.tableIds = tableId;
     }
 

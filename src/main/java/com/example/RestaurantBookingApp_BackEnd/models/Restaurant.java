@@ -19,7 +19,7 @@ public class Restaurant {
     private String name;
 
     @OneToMany(mappedBy = "restaurant")
-    @JsonIgnoreProperties({"restaurant"})
+    @JsonIgnoreProperties({"restaurant", "listOfBookings"})
 //    @JoinColumn(name = "table_id")
     private List<Table> tables;
 
@@ -27,20 +27,24 @@ public class Restaurant {
     private String location;
 
     @OneToMany(mappedBy = "restaurant")
-    @JsonIgnoreProperties({"restaurant"})
+    @JsonIgnoreProperties({"restaurant", "customer", "listOfTables"})
 //    @JoinColumn( name ="booking_id")
     private List<Booking> bookings;
+
+    private String review;
+
 
 //    EXT:
 //    @Column
 //    private String email;
 
 //   CONSTRUCTOR
-    public Restaurant(String name, String location){
+    public Restaurant(String name, String location, String review){
         this.location = location;
         this.name = name;
         this.bookings = new ArrayList<>();
         this.tables = new ArrayList<>();
+        this.review= review;
     }
 
 //   DEFAULT CONSTRUCTOR
@@ -87,5 +91,13 @@ public class Restaurant {
 
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
     }
 }

@@ -1,7 +1,9 @@
 package com.example.RestaurantBookingApp_BackEnd.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,7 +20,7 @@ public class Booking {
 
 //    many to one => customer
     @ManyToOne
-    @JsonIgnoreProperties({"listOfBookings"})
+    @JsonIgnoreProperties({"bookings"})
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -30,7 +32,7 @@ public class Booking {
 
 //    owner over table in the many-to-many rel
     @ManyToMany
-    @JsonIgnoreProperties({"bookings"})
+    @JsonIgnoreProperties({"listOfBookings", "restaurant"})
     @JoinTable(
             name="bookings_tables",
             joinColumns = {@JoinColumn(name="booking_id")},
@@ -39,19 +41,21 @@ public class Booking {
     private List<Table> listOfTables;
 
     @Column
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
 
     @Column
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime time;
 
     private String message;
 
 //    CONSTRUCTOR- for the booking model
 
-    public Booking(Customer customer, Restaurant restaurant, LocalDate date, LocalTime time){
+    public Booking(Customer customer, Restaurant restaurant, List listOfTables, LocalDate date, LocalTime time){
         this.customer = customer;
         this.restaurant = restaurant;
-        this.listOfTables = new ArrayList<>();
+        this.listOfTables = listOfTables;
         this.date = date;
         this.time = time;
         this.message = "";
@@ -60,6 +64,12 @@ public class Booking {
 //    DEFAULT CONSTRUCTOR
     public Booking(){
 
+    }
+
+
+
+    public void addTable(Table table){
+        this.listOfTables.add(table);
     }
 
 //    GETTERS AND SETTERS:
