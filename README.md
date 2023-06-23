@@ -72,6 +72,16 @@ spring.jpa.hibernate.ddl-auto=create-drop
 | `makeNewBooking`             | POST         | `BookingDTO bookingDTO` (customerName, tableIds, restaurantId, date, time, message) | `/bookings`               |
 | `deleteBooking`              | DELETE       | null                                                                                | `/bookings/{id}`          |
 \
+### Customer Controller
+| Route Name                   | Request Type | RequestBody                        | Request Path                           |
+|------------------------------|--------------|------------------------------------|----------------------------------------|
+| `getAllCustomers`            | GET          | null                               | `/customer`                            |
+| `getCustomerByID`            | GET          | null                               | `/customer/{customerId}`               |
+| `getCustomerLocationByID`    | GET          | null                               | `/customer/{customerId}/location/`     |
+| `editCustomerLocation`       | PATCH        | `String newLocation` (newLocation) | `/customer/{customerId}/location/edit` |
+| `getAllBookingsByCustomerID` | GET          | null                               | `/customer/{customerId}/bookings`      |
+\
+
 
 ### THE API
 
