@@ -95,4 +95,9 @@ spring.jpa.hibernate.ddl-auto=create-drop
 
 ### Challenges:
 * We had an infinite recursion issue because we failed to utilise @JsonIgnoreProperties
+* Returned a bookingDTO instead of bookig object causing the database not to be updated when making a new booking
+
 ### Futures:
+* Adding restaurant address to the database for it to accessible by google map external api
+* We would scale by creating a restaurant server side to enable individual restaurant to added their restaurant to the database and access table bookings
+* User login and saving their personal contact details
