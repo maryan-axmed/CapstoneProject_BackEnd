@@ -67,20 +67,33 @@ spring.jpa.hibernate.ddl-auto=create-drop
 | Route Name                   | Request Type | RequestBody                                                                         | Request Path              |
 |------------------------------|--------------|-------------------------------------------------------------------------------------|---------------------------|
 | `getAllBookings`             | GET          | null                                                                                | `/bookings`               |
-| `getBookingByID`             | GET          | null                                                                                | `/bookings/{id}`          |
-| `getAllBookingsByCustomerID` | GET          | null                                                                                | `/bookings/customer/{id}` |
+| `getBookingById`             | GET          | null                                                                                | `/bookings/{id}`          |
+| `getAllBookingsByCustomerId` | GET          | null                                                                                | `/bookings/customer/{id}` |
 | `makeNewBooking`             | POST         | `BookingDTO bookingDTO` (customerName, tableIds, restaurantId, date, time, message) | `/bookings`               |
 | `deleteBooking`              | DELETE       | null                                                                                | `/bookings/{id}`          |
-\
+
 ### Customer Controller
 | Route Name                   | Request Type | RequestBody                        | Request Path                           |
 |------------------------------|--------------|------------------------------------|----------------------------------------|
 | `getAllCustomers`            | GET          | null                               | `/customer`                            |
-| `getCustomerByID`            | GET          | null                               | `/customer/{customerId}`               |
-| `getCustomerLocationByID`    | GET          | null                               | `/customer/{customerId}/location/`     |
+| `getCustomerById`            | GET          | null                               | `/customer/{customerId}`               |
+| `getCustomerLocationById`    | GET          | null                               | `/customer/{customerId}/location/`     |
 | `editCustomerLocation`       | PATCH        | `String newLocation` (newLocation) | `/customer/{customerId}/location/edit` |
-| `getAllBookingsByCustomerID` | GET          | null                               | `/customer/{customerId}/bookings`      |
+| `getAllBookingsByCustomerId` | GET          | null                               | `/customer/{customerId}/bookings`      |
 \
+### Restaurant Controller
+| Route Name                  | Request Type | RequestBody                        | Request Path                  |
+|-----------------------------|--------------|------------------------------------|-------------------------------|
+| `getAllRestaurants`         | GET          | null                               | `/restaurants`                |
+| `getRestaurantById`         | GET          | null                               | `/restaurants/{restaurantId}` |
+
+
+### Table Controller
+| Route Name                   | Request Type | RequestBody                        | Request Path                        |
+|------------------------------|--------------|------------------------------------|-------------------------------------|
+| `getAllTables`               | GET          | null                               | `/tables`                           |
+| `getTableById`               | GET          | null                               | `/tables/{tableId}`                 |
+| `getAllTablesByRestaurantId` | GET          | null                               | `/tables/restaurant/{restaurantId}` |
 
 
 ### THE API
