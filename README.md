@@ -1,6 +1,6 @@
 # A RESTAURANT BOOKING APP
 
-### <I>COLLABORATORS: </I>
+### <I>Collaborators: </I>
 * Fiona Eshun (GitHub: `Fiona2223` )
 * Maryan Axmed (GitHub: `maryan-axmed`)
 * Sarah Abdulle (GitHub: `sarahabdulle1`)
@@ -13,19 +13,18 @@
 * Project Aim
 * Technical Information
 * Installation Guide
-* Dependencies
 * Diagrams
-* The API
+* List of Routes
 * Challenges
 * Future
 
-### Project Overview
+### Project Overview:
 
 We collaborated to create the backend of a restaurant booking app that enables a user to book tables at a restaurant of their choice.
 
 Our MVP was to enable a customer to book a table at multiple restaurants and filtering the locations of restaurants by their city. 
 
-### Project Aims
+### Project Aims:
 
 The aim of this project was to make it easier and more convenient for customers to book tables at a restaurant. 
 
@@ -52,16 +51,14 @@ spring.jpa.hibernate.ddl-auto=create-drop
 ```
 * After running the application, you should be able to view the information from the `DataLoader` in Postman and Postico.
 
-### DEPENDENCIES
-
-### DIAGRAMS
-#### <i> UML Diagram </i>
+## Diagrams:
+### <i> UML Diagram </i>
 ![UML Diagram](UML_Diagram.png)
 
 #### <i> ERD Diagram </i>
 ![ERD Diagram](ERD_Diagram.png)
 
-## List of routes:
+## List of Routes:
 
 ### Booking Controller
 | Route Name                   | Request Type | RequestBody                                                                         | Request Path              |
@@ -96,8 +93,6 @@ spring.jpa.hibernate.ddl-auto=create-drop
 | `getAllTablesByRestaurantId` | GET          | null                               | `/tables/restaurant/{restaurantId}` |
 
 
-### THE API
-
-### CHALLENGES
-
-### FUTURE
+### Challenges:
+* We had an infinite recursion issue because we failed to utilise @JsonIgnoreProperties
+### Futures:
